@@ -17,18 +17,13 @@
     }
 
     //データベースから名前を取り出す
-    $userName = $result['userName'];
+    $userName = $result['userId'];
 
     //cartテーブルに仮のuserIdで保存された商品があれば正式なログインユーザーのuserIdに変更する
-    $user->changeCartUserId($_SESSION['userId'], $userId);
+    // $user->changeCartUserId($_SESSION['userId'], $userId);
 
     //ユーザー情報をセッションに保持する
     $_SESSION['userId'] = $userId;
-    $_SESSION['userName'] = $userName;
-    $_SESSION['kana'] = $result['kana'];
-    $_SESSION['zip'] = $result['zip'];
-    $_SESSION['address'] = $result['address'];
-    $_SESSION['tel'] = $result['tel'];
 
     //ユーザーIDと名前をクッキーに保持する
     setcookie("userId", $userId, time() + 60*60*24*14, '/');
@@ -37,8 +32,8 @@
     require_once __DIR__ ."/../header.php";
     require_once __DIR__ ."/../util.php";
 ?>
-<p>こんにちは、<?= $userName ?>さん。</p>
-<p>ショッピングをお楽しみください。</p>
+<p>こんにちは、<?= $userName ?>家様。</p>
+<p>ご家庭の味ををお楽しみください。</p>
 <?php
     require_once __DIR__ ."/../footer.php";
 ?>

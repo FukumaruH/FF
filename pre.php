@@ -34,15 +34,15 @@ if(empty($userId) || empty($userName)){
 
 //ヘッダー・フッターで使用するリンクのFQDN(Fully Qualified Domain Name)作成の準備
 $http_host = '//' .$_SERVER['SERVER_NAME'];
-$shopid = mb_substr($_SERVER['REQUEST_URI'], 1, 9);
+$FFid = mb_substr($_SERVER['REQUEST_URI'], 1, 12);
 
 //ヘッダー・フッターで使用するリンクのURLを用意する
-$index_php = $http_host .'/'.$shopid.'/index.php';
-$cart_list_php = $http_host .'/'.$shopid.'/cart/cart_list.php';
-$order_history_php = $http_host .'/'.$shopid.'/order/order_history.php';
-$login_php = $http_host .'/'.$shopid.'/user/login.php';
-$logout_php = $http_host .'/'.$shopid.'/user/logout.php';
-$signup_php = $http_host .'/'.$shopid.'/user/signup.php';
+$index_php = $http_host .'/'.$FFid.'/index.php';
+$cart_list_php = $http_host .'/'.$FFid.'/cart/cart_list.php';
+$order_history_php = $http_host .'/'.$FFid.'/order/order_history.php';
+$login_php = $http_host .'/'.$FFid.'/user/login.php';
+$logout_php = $http_host .'/'.$FFid.'/user/logout.php';
+$signup_php = $http_host .'/'.$FFid.'/user/signup.php';
 
 //CSSファイルのURLを用意する
-$shop_css = $http_host .'/'.$shopid.'/css/shop.css';
+$shop_css = $http_host .'/'.$FFid.'/css/shop.css';

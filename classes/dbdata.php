@@ -5,9 +5,9 @@
                       
       public function __construct( ) {   // コンストラクタ     
           // PDOオブジェクトを生成する                     
-          $dsn = 'mysql:host=localhost;dbname=shop;charset=utf8';                     
-          $user = 'shopping';                     
-          $password = 'site';                     
+          $dsn = 'mysql:host=localhost;dbname=FF;charset=utf8';                     
+          $user = 'family';                     
+          $password = 'foods';                     
           try{                      
               $this->pdo = new PDO($dsn, $user, $password);                     
           } catch(Exception  $e){                     

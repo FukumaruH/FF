@@ -34,7 +34,7 @@ if(empty($userId) || empty($userName)){
 
 //ヘッダー・フッターで使用するリンクのFQDN(Fully Qualified Domain Name)作成の準備
 $http_host = '//' .$_SERVER['SERVER_NAME'];
-$FFid = mb_substr($_SERVER['REQUEST_URI'], 1, 12);
+$FFid = mb_substr($_SERVER['REQUEST_URI'], 1, 2);
 
 //ヘッダー・フッターで使用するリンクのURLを用意する
 $index_php = $http_host .'/'.$FFid.'/index.php';

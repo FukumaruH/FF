@@ -6,7 +6,7 @@ echo "<html lang=\"ja\">\n";
 echo "<head>\n";
 echo "<meta charset=\"UTF-8\">\n";
 echo "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n";
-echo "<title>初心者向けホームページテンプレート tp_beginner6</title>\n";
+echo "<title>Famiry Foods</title>\n";
 echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n";
 echo "<meta name=\"description\" content=\"ここにサイト説明を入れます\">\n";
 echo "<meta name=\"keywords\" content=\"キーワード１,キーワード２,キーワード３,キーワード４,キーワード５\">\n";

@@ -71,4 +71,9 @@ echo "<dd>サンプルテキスト。サンプルテキスト。サンプルテ�
 echo "</dl>\n";
 echo "\n";
 echo "</section>";
+
+echo "<footer>\n";
+echo "<small>Copyright&copy; <a href=\"index.php\">Family Foods</a> All Rights Reserved.</small>\n";
+echo "<span class=\"pr\">《<a href=\"https://template-party.com/\" target=\"_blank\">Web Design:Template-Party</a>》</span>\n";
+echo "</footer>";
 ?>

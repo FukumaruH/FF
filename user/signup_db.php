@@ -1,27 +1,28 @@
 <?php
-//送られてきたデータを受け取る
-$kubun = $_POST['kubun'];
+//送られてきたデータを受け取
 $userId = $_POST['userId'];
-$userName = $_POST['userName'];
-$kana = $_POST['kana'];
-$zip = $_POST['zip'];
-$address = $_POST['address'];
-$tel = $_POST['tel'];
 $password = $_POST['password'];
+$password1 = $_POST['password1'];
 
 session_start();
 
-//バリデーションはメールアドレスと郵便番号のみとする
-//メールアドレスのバリデーションはfilter_var()を使い、RFCに準拠しないメルアドはエラーをする
-if(!filter_var($userId, FILTER_VALIDATE_EMAIL)){
-    $_SESSION['signup_error'] = '正しいメールアドレスを入力してください。';
+//ユーザーIDの長さを取得し12より小さければエラーとする
+if(strlen($userId)<12){
+    $_SESSION['signup_error'] = '12文字以上にしてください。';
     header('Location: signup.php');
     exit();
 }
 
-//郵便番号は半角整数の7桁かどうかだけをチェックする
-if(!is_numeric($zip) || strlen($zip) !== 7){
-    $_SESSION['signup_error'] = '正しい郵便番号を入力してください。';
+//ユーザーIDを半角英数字かチェック
+if(preg_match('/[^A-Za-z0-9]/', $userId)){
+    $_SESSION['signup_error'] = '半角英数字で入力してください。';
+    header('Location: signup.php');
+    exit();
+}
+
+//ユーザーパスワードのチェック
+if($password !== $password1){
+    $_SESSION['signup_error'] = '入力されたパスワードと確認用パスワードが違います。';
     header('Location: signup.php');
     exit();
 }
@@ -29,12 +30,9 @@ if(!is_numeric($zip) || strlen($zip) !== 7){
 //Userオブジェクトを生成し、ユーザー登録・更新処理を行う
 require_once __DIR__ . "/../classes/user.php";
 $user = new User();
-//$kubunの値が｢insert｣ならば｢登録｣、｢update｣ならば｢更新｣処理を行う
-if($kubun === "insert"){
-    $result = $user->signUp($userId, $userName, $kana, $zip, $address, $tel, $password, $_SESSION['userId']);
-} else{
-    $result = $user->updateUser($userId, $userName, $kana, $zip, $address, $tel, $password, $_SESSION['userId']);
-}
+
+$result = $user->signUp($userId, $password);
+
 //登録に失敗した場合、エラーメッセージをセッションに保存し、ユーザー登録画面(signup.php)に遷移する
 if($result !== ''){
     $_SESSION['signup_error'] = $result;
@@ -44,28 +42,22 @@ if($result !== ''){
 
 //ユーザー情報をセッションに保持する
 $_SESSION['userId'] = $userId;
-$_SESSION['userName'] = $userName;
-$_SESSION['kana'] = $kana;
-$_SESSION['zip'] = $zip;
-$_SESSION['address'] = $address;
-$_SESSION['tel'] = $tel;
 
 //ユーザーIDと名前をクッキーに保持する
 setcookie("userId", $userId, time() + 60*60*24*14, '/');
-setcookie("userName", $userName, time() + 60*60*24*14, '/');
 
 require_once __DIR__ ."/../header.php";
 require_once __DIR__ ."/../util.php";
 ?>
-ユーザー情報を登録・更新しました。<br>
+登録が完了しました<br>
+このページをプリントアウトするか<br>
+もしくは紙にメモをして頂き、忘れないように注意してください<br>
 <table>
-<tr><td>Eメール</td><td><?= h($userId) ?></td></tr>
-<tr><td>名前</td><td><?= h($userName) ?></td></tr>
-<tr><td>フリガナ</td><td><?= h($kana) ?></td></tr>
-<tr><td>郵便番号</td><td><?= mb_substr($zip, 0, 3) ?>-<?= mb_substr($zip, 3, 4) ?></td></tr>
-<tr><td>住所</td><td><?= h($address) ?></td></tr>
-<tr><td>電話番号</td><td><?= h($tel) ?></td></tr>
+<tr><td>家族ID</td><td><?= h($userId) ?></td></tr>
+<tr><td>パスワード</td><td><?= h($password) ?></td></tr>
 </table>
+
+<a href="./login.php"><span class="button_image">ログイン画面へ</span></a>
 <?php
     require_once __DIR__ . "/../footer.php";
 ?>

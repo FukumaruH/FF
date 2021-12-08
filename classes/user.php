@@ -19,7 +19,7 @@
         }
     
         //ユーザー登録処理
-        public function signUp($userId, $userName, $kana, $zip, $address, $tel, $password, $tempId){
+        public function signUp($userId, $password){
             $sql = "select * from users where userId = ?";
             $stmt = $this->query($sql, [$userId]);
             $result = $stmt->fetchAll();
@@ -27,12 +27,12 @@
             if($result){
                 return 'この' . $userId . 'は既に登録されています。';
             }
-            $sql = "insert into users(userId, userName, kana, zip, address, tel, password) values(?, ?, ?, ?, ?, ?, ?)";
-            $result = $this->exec($sql, [$userId, $userName, $kana, $zip, $address, $tel, $password]);
+            $sql = "insert into users(userId, password) values(?, ?)";
+            $result = $this->exec($sql, [$userId, $password]);
 
             if($result){
-                //登録に成功した場合、cart内に保存されている商品があれば登録したユーザーIDに変更する
-                $this->changeCartUserId($tempId, $userId);
+                //登録に成功した場合
+                
                 return '';
             } else{
                 //何らかの原因で失敗した場合

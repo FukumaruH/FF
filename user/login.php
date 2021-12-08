@@ -15,7 +15,7 @@
     <tr><td colspan="2"><input type="submit" value="ログイン"></td></tr>
 </table>
 </form>
-<a href="./signup.php">新規登録はこちらから</a>
+<a href="./signup.php"><input type="button" value="新規登録はこちらから" style="width:180px;height:30px"></a>
 <?php
     require_once __DIR__ ."/../footer.php";
 ?>

@@ -49,7 +49,7 @@ setcookie("userId", $userId, time() + 60*60*24*14, '/');
 require_once __DIR__ ."/../header.php";
 require_once __DIR__ ."/../util.php";
 ?>
-登録が完了しました<br>
+登録が完了しました<br><br>
 このページをプリントアウトするか<br>
 もしくは紙にメモをして頂き、忘れないように注意してください<br>
 <table>
@@ -57,7 +57,7 @@ require_once __DIR__ ."/../util.php";
 <tr><td>パスワード</td><td><?= h($password) ?></td></tr>
 </table>
 
-<a href="./login.php"><span class="button_image">ログイン画面へ</span></a>
+<a href="./signup.php"><input type="button" value="ログイン画面へ" style="width:180px;height:30px"></a>
 <?php
     require_once __DIR__ . "/../footer.php";
 ?>

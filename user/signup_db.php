@@ -50,14 +50,13 @@ require_once __DIR__ ."/../header.php";
 require_once __DIR__ ."/../util.php";
 ?>
 登録が完了しました<br><br>
-このページをプリントアウトするか<br>
-もしくは紙にメモをして頂き、忘れないように注意してください<br>
+<font color="red">このページをプリントアウトするか<br>もしくは紙にメモをして頂き、忘れないように注意してください<br></font><br>
 <table>
 <tr><td>家族ID</td><td><?= h($userId) ?></td></tr>
 <tr><td>パスワード</td><td><?= h($password) ?></td></tr>
 </table>
 
-<a href="./signup.php"><input type="button" value="ログイン画面へ" style="width:180px;height:30px"></a>
+<a href="./login.php"><input type="button" value="ログイン画面へ" style="width:180px;height:30px"></a>
 <?php
     require_once __DIR__ . "/../footer.php";
 ?>

@@ -249,10 +249,10 @@ table.recipe_material {
   width: 80px;
   height: 60px;
   font-size:24px;
-  color:#ffffff;
-  background-color: orange;
+  color:#000000;
+  background-color: #b2ffd8;
   border-radius:5px;
-  border: none;
+  border:2px solid #8ae6b8;
 }
 
 .wrap2 {

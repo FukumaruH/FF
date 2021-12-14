@@ -187,3 +187,92 @@ img.detail_img {
 }
 
 /* 01001 */
+
+
+.wrap{
+  display:flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+/* 投稿画面左側、写真部分の配置 */
+.r_left {
+  width: 40%;
+  padding: 20px;
+}
+
+.r_left img {
+  display: block;
+  width: 50%;
+  height: auto;
+  margin-left: auto;
+}
+
+/* 投稿画面右側、材料部分の配置 */
+.r_right {
+  width: 60%;
+  padding: 20px;
+}
+
+/* 投稿画面、表の枠線なし */
+table.recipe, th, td {
+  border: 0px none;
+}
+
+/* 材料テーブルのみ左寄せにする */
+table.recipe_material {
+  margin-left: 0%;
+}
+
+/* テキストボックスのサイズ調整 */
+.td_title {
+  width: 100%;
+}
+
+.td_material {
+  width: 230px;
+}
+
+.td_instruction {
+  width: 780px;
+}
+
+/* セル内のデータを左詰め表示 */
+.td_left {
+  text-align: left;
+}
+
+/* 投稿ボタン */
+.button_post, .button_edit, .button_delete {
+  display: inline-block;
+  text-align: center;
+  width: 80px;
+  height: 60px;
+  font-size:24px;
+  color:#000000;
+  background-color: #b2ffd8;
+  border-radius:5px;
+  border:2px solid #8ae6b8;
+}
+
+.wrap2 {
+  margin-left: 55%;
+}
+
+/* 編集ボタン */
+.button_edit {
+  margin: 15px;
+}
+
+/* 削除ボタン */
+.button_delete {
+  margin: 15px;
+  background-color: #ffbcbc;
+  border:2px solid #e68a8a;
+}
+
+.recipetitle {
+  padding: 0px 0px 20px 0px;
+  font-size: 32px;
+  /* color: #268053; */
+}

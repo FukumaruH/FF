@@ -243,7 +243,7 @@ table.recipe_material {
 }
 
 /* 投稿ボタン */
-.button_post {
+.button_post, .button_edit, .button_delete {
   display: inline-block;
   text-align: center;
   width: 80px;
@@ -257,4 +257,22 @@ table.recipe_material {
 
 .wrap2 {
   margin-left: 55%;
+}
+
+/* 編集ボタン */
+.button_edit {
+  margin: 15px;
+}
+
+/* 削除ボタン */
+.button_delete {
+  margin: 15px;
+  background-color: #ffbcbc;
+  border:2px solid #e68a8a;
+}
+
+.recipetitle {
+  padding: 0px 0px 20px 0px;
+  font-size: 32px;
+  /* color: #268053; */
 }

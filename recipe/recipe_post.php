@@ -37,10 +37,13 @@ $(function() {
 <form method="POST" action="./recipe_db.php" enctype="multipart/form-data"> <!-- ファイル名書き換える -->
     <table class="recipe">
         <tr>
-        <th>タイトル</th><td><input type="text" name="title" class="td_title"></td>
+        <th>タイトル</th><td colspan="3"><input type="text" name="title" class="td_title"></td>
         </tr>
         <tr>
-        <th>ひとこと</th><td><textarea name="comment" cols="40" rows="2"></textarea></td>
+        <th>ひとこと</th><td colspan="3"><textarea name="comment" cols="60" rows="2"></textarea></td>
+        </tr>
+        <tr>
+        <th>投稿者</th><td><input type="text" name="poster"></td><th>何人分</th><td><input type="text" name="servings"></td>
         </tr>
     </table>
 

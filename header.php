@@ -23,13 +23,13 @@
         <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">ログアウト</a>
+                    <a href="//localhost/FF/user/logout.php" class="nav-link" href="#">ログアウト</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">お問い合わせ</a>
+                    <a href="//localhost/FF/toiawase/toiawase.php"class="nav-link" href="#">お問い合わせ</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">何か足す？</a>
+                <a href="//localhost/FF/recipe/recipe_post.php" class="nav-link" href="#">何か足す？</a>
                 </li>
             </ul>
         </div>

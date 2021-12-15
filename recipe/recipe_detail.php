@@ -25,7 +25,8 @@
 
 <div class="wrap">
     <section class="r_left">
-        <img class="detail_img" src="../images/sample1.jpg">
+        <img class="detail_img" src="https://1.bp.blogspot.com/-M28GZaegp38/X68afYkxWXI/AAAAAAABcQw/tSAxXfPaPp8GtBwzh9eieDieqWXxS47IgCNcBGAsYHQ/s757/food_thai_somtom_salad.png"
+            >
     </section>
     <section class="r_right">
         <table class="recipe recipe_material" id="tableMaterial">
@@ -80,7 +81,7 @@
     <a href="./recipe_delete.php?recipeId=<?= $item['recipeId'] ?>">
         <input type="button" value="削除" class="button_delete"></a>
     <br><br>
-    <a href="/../home.php"><input type="button" value="戻る" style="width:180px;height:30px"></a>
+    <a href="//localhost/FF/family_foods/recipe_list.php"><input type="button" value="戻る" style="width:180px;height:30px"></a>
 </div>
 </form>
 <?php

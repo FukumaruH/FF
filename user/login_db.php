@@ -32,8 +32,8 @@
     require_once __DIR__ ."/../header.php";
     require_once __DIR__ ."/../util.php";
 ?>
-<p>こんにちは、<?= $userName ?>家様。</p>
-<p>ご家庭の味ををお楽しみください。</p>
+<!-- <p>こんにちは、<?= $_SESSION['userId'] ?>様。</p>
+<p>ご家庭の味ををお楽しみください。</p> -->
 <?php
-    require_once __DIR__ ."/../footer.php";
+   header('Location: http://localhost/FF/family_foods/recipe_list.php');
 ?>

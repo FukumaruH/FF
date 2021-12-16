@@ -10,7 +10,6 @@
 
     //ユーザーIDと名前のクッキー情報も破棄する
     setcookie('userID', '', time() - 1000, '/');
-    setcookie('userName', '', time() - 1000, '/');
 
     //ジャンル選択画面(トップページ)に遷移する
     header("Location: " . $index_php);

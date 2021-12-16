@@ -9,24 +9,6 @@ grant all privileges on FF.* to family@localhost identified by 'foods';
 # データベースFFを使用する
 use FF;
 
-# テーブルitemsの作成
-
-
-# テーブルitemsへデータを入力
-
-
-# カートテーブルcartの作成
-drop table if exists cart;
-
-
-# 注文テーブルordersの作成
-drop table if exists orders;
-
-
-# 注文明細テーブルorderdetailsの作成
-drop table if exists orderdetails;
-
-
 # ユーザーテーブルusersの作成
 drop table if exists users;
 create table users(
@@ -37,3 +19,84 @@ create table users(
 # テーブルusersへデータを入力
 insert into users(userId, password)
  values('familyfoods', 'familyfoods');
+
+#　レシピテーブルrecipesの作成
+drop table if exists recipes;
+create table recipes(
+    userId          varchar(50) not null,
+    recipeId        int auto_increment primary key,
+    title           varchar(30) not null,
+    poster          varchar(20) default '',
+    comment         varchar(255) default '',
+    servings        int default null,
+    posttime        datetime,
+    foreign key (userId)
+    references users(userId)
+);
+
+#　テーブルrecipesへデータを入力
+insert into recipes(userId, title, poster, comment, servings, posttime) 
+values ('familyfoods', 'カレーライス', '母', '甘口', 4, '2021-12-15 10:30:12.234561');
+
+#　材料テーブルmaterialsの作成
+drop table if exists materials;
+create table materials(
+    materialId      int auto_increment primary key,
+    material    varchar(255) not null,
+    quantity    varchar(255) not null,
+    recipeId      int,
+    foreign key (recipeId)
+    references recipes(recipeId)
+);
+
+#　テーブルmaterialsへデータを入力
+insert into materials(material, quantity, recipeId)
+values ('カレールー', '1/2ブロック', 1);
+insert into materials(material, quantity, recipeId)
+values ('玉ねぎ', '1/2個', 1);
+insert into materials(material, quantity, recipeId)
+values ('人参', '1/2本', 1);
+insert into materials(material, quantity, recipeId)
+values ('豚小間切れ', '250グラム', 1);
+insert into materials(material, quantity, recipeId)
+values ('水', '700cc', 1);
+
+#　手順テーブルinstructionsの作成
+drop table if exists instructions;
+create table instructions(
+    instructionId       int auto_increment primary key,
+    instruction         varchar(255) default '',
+    instructionNumber   int,
+    recipeId            int,
+    foreign key (recipeId)
+    references recipes(recipeId)
+);
+
+#　テーブルinstructionsへデータを入力
+insert into instructions(instruction, instructionNumber, recipeId)
+values ('人参玉ねぎを切ります。人参3mm幅、玉ねぎ1cm幅', 1, 1);
+insert into instructions(instruction, instructionNumber, recipeId)
+values ('鍋に油をひいて、中火で豚肉を炒めます。大きい場合はハサミで切ります。', 2, 1);
+insert into instructions(instruction, instructionNumber, recipeId)
+values ('全体の色が変わったら野菜を入れて、全体に油が回るまで炒めます。', 3, 1);
+insert into instructions(instruction, instructionNumber, recipeId)
+values ('水、しょうが、鶏ガラ、塩を加えて強火で煮立たせます。', 4, 1);
+insert into instructions(instruction, instructionNumber, recipeId)
+values ('10分経ったらルーを溶かしてカレー粉で味の調節をします。', 5, 1);
+insert into instructions(instruction, instructionNumber, recipeId)
+values ('水溶き片栗粉で好みのとろみをつけて完成です。', 6, 1);
+
+
+#　イメージテーブルimagesの作成
+drop table if exists images;
+create table images(
+    imageId         int auto_increment primary key,
+    imageName       varchar(50) not null unique,
+    recipeId        int,
+    foreign key (recipeId)
+    references recipes(recipeId)
+);
+
+#　テーブルimagesへデータを入力
+insert into images(imageName, recipeId)
+values ('curryruce.png', 1);

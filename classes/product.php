@@ -19,4 +19,12 @@
             $item = $stmt->fetch();
             return $item;
         }
+
+        //ログインしたuserIdのレシピ一覧を取り出す
+       public function getrecipelist($userId){
+           $sql = "select recipeId, title, comment, posttime, imageName from recipeslist where userId = ?";
+           $stmt = $this->query($sql, [$userId]);
+           $items = $stmt->fetchAll();
+           return $items;
+       }
     }

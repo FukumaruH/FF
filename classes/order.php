@@ -3,44 +3,36 @@
   require_once __DIR__ . '/dbdata.php';
 
   class Order extends DbData {
-    // カート内の全ての商品を注文内容として登録する
-    public function addOrder($userId, $cartItems ) {
-      // 注文テーブルに登録
-      $sql = "insert into orders(userId, orderdate) values(?, ?)";      
-      $result = $this->exec( $sql,  [ $userId, date("Y-m-d H:i:s") ] );
-      // 注文番号を取得する
-      $sql = "select  last_insert_id( )  from  orders";
-      $stmt = $this->query( $sql,  [ ]);
-      $result = $stmt->fetch( );
-      $orderId = $result[ 0 ];
-      // 注文明細テーブルに登録する
-      foreach( $cartItems  as  $item ) {
-        $sql = "insert into orderdetails values( ?, ?, ? )";
-        $result = $this->exec($sql,  [$orderId,  $item['ident'],  $item['quantity'] ] );
-      }
+    //投稿されたレシピの内容をrecipesテーブルに登録する
+    public function addrecipe($userId, $title, $poster, $comment, $servings, $posttime){
+      $sql = "insert inot recipes (userId, title, poster, comment, servings, posttiem) values (?, ?, ?, ?, ?, ?)";
+      $result = $this->exec($sql, [$userId, $title, $poster, $comment, $servings, date("Y-m-d H:i:s")]);
+      $sql = "select max(recipeId) from recipes WHERE userId = ?";
+      $stmt = $this->query( $sql,  [$userId]);
+      $result = $stmt->fetch();
+      $recipeId = $result[ 0 ];
+      return $recipeId;
     }
-
-    // 注文履歴
-    public function getOrders($userId){
-      // 注文明細テーブルのデータを注文番号の降順で取得
-      $sql = "select orderdetails.orderId, items.ident, items.name, items.maker, items.price,
-              orderdetails.quantity, items.image, items.genre from orderdetails 
-              join items on orderdetails.itemId = items.ident 
-              where orderdetails.orderId in (select orders.orderId from orders where orders.userId = ?)
-              order by orderdetails.orderId desc";
-      $stmt = $this->query($sql, [$userId]);
-      $orders = $stmt->fetchAll();
-      return $orders;
+    //投稿されたレシピの内容をmaterialsテーブルに登録する
+    public function addmaterial($material, $quantity, $recipeId){
+      $sql = "insert into materals (material, quantity, recipeId) values (?, ?, ?)";
+      $result = $this->exec($sql, [$material, $quantity, $recipeId]);
     }
-
-    //注文履歴内の現在のユーザーID($tempId)を変更後のユーザーID($userId)に変更する
-    public function changeUserId($tempId, $userId){
-      $sql = "select * from orders where userId = ?";
-      $stmt = $this->query($sql, [$tempId]);
-      $cart_items = $stmt->fetchAll();
-      if($cart_items){
-        $sql = "update orders set userId = ? where userId = ?";
-        $stmt = $this->exec($sql, [$userId, $tempId]);
-      }
+    //投稿されたレシピの内容をinstructionsテーブルに登録する
+    public function addinstruction($instruction, $instructionNumber, $recipeId){
+      $sql = "insert into instructions (instruction, instructionNumber, recipeId) values (?, ?, ?)";
+      $result = $this->exec($sql, [$instruction, $instructionNumber, $recipeId]);
+    }
+    //投稿されたレシピの内容をimagesテーブルに登録する
+    public function addimage($imageName, $recipeId){
+      $sql = "insert into images (imageName, recipeId) values (?, ?)";
+      $result = $this->exec($sql, [$imageName, $recipeId]);
+    }
+    //ビューrecipelistを再度作成する
+    public function createview(){
+      $sql = "CREATE OR REPLACE VIEW recipeslist AS SELECT recipes.userId, recipes.recipeId, recipes.title, 
+      recipes.poster, recipes.comment, recipes.servings, recipes.posttime, images.imageName 
+      FROM recipes, images WHERE recipes.recipeId = images.recipeId";
+      $result = $this->exec($sql, [ ]);
     }
   }

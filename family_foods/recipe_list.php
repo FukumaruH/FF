@@ -48,7 +48,7 @@ if(empty($recipes)){
     </section>
     <section class="sachi_right">
         <div class="sachi_img">
-            <a href="//localhost/FF/recipe/recipe_detail.php">
+            <a href="//localhost/FF/recipe/recipe_detail.php?recipeId=<?= $recipeId ?>">
             <img src="../images/<?= $recipe['imageName'] ?>"
             ></a>
         </div>

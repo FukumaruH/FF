@@ -27,4 +27,29 @@
            $items = $stmt->fetchAll();
            return $items;
        }
+
+       // 選択されたレシピを取り出す
+       public function getRecipe($recipeId){
+            $sql = "select * from recipeslist where recipeId = ?";
+            $stmt = $this->query($sql, [$recipeId]);
+            $recipe = $stmt->fetch();
+            return $recipe;
+        }
+
+       // 選択されたレシピの材料を取り出す
+        public function getMaterials($recipeId){
+            $sql = "select * from materials where recipeId = ? order by materialId";
+            $stmt = $this->query($sql, [$recipeId]);
+            $materials = $stmt->fetchAll();
+            return $materials;
+        }
+
+        // 選択されたレシピの手順を取り出す
+        public function getInstructions($recipeId){
+            $sql = "select * from instructions where recipeId = ? order by instructionNumber";
+            $stmt = $this->query($sql, [$recipeId]);
+            $instructions = $stmt->fetchAll();
+            return $instructions;
+        }
+
     }

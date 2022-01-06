@@ -9,24 +9,25 @@
     $materials = $product->getMaterials($recipeId);
     $instructions = $product->getInstructions($recipeId);
     require_once __DIR__ . '/../header.php';
+    require_once __DIR__ . '/../util.php'
 ?>
 <!-- <h2>レシピ詳細</h2><br> -->
 <table class="recipe">
     <tr>
-        <th colspan="2" class="recipetitle"><?= $recipe['title'] ?></th>
+        <th colspan="2" class="recipetitle"><?= h($recipe['title']) ?></th>
     </tr>
     <tr>
-        <td colspan="2"><?= $recipe['comment'] ?></td>
+        <td colspan="2"><?= h($recipe['comment']) ?></td>
     </tr>
     <tr>
-        <th>投稿者: <?= $recipe['poster'] ?></th>
-        <td><?= $recipe['servings'] ?>人分<td>
+        <th>投稿者: <?= h($recipe['poster']) ?></th>
+        <td><?= h($recipe['servings']) ?>人分<td>
     <tr>
 </table>
 
 <div class="wrap">
     <section class="r_left">
-        <img src="../images/<?= $recipe['imageName'] ?>">
+        <img src="../images/<?= h($recipe['imageName']) ?>">
     </section>
     <section class="r_right">
         <table class="recipe recipe_material" id="tableMaterial">
@@ -38,8 +39,8 @@
             foreach($materials as $material) {
 ?>
                 <tr>
-                    <td class="td_material"><?= $material['material'] ?></td>
-                    <td class="td_material"><?= $material['quantity'] ?></td> 
+                    <td class="td_material"><?= h($material['material']) ?></td>
+                    <td class="td_material"><?= h($material['quantity']) ?></td> 
                 </tr> 
 <?php
             }
@@ -57,23 +58,45 @@
     foreach($instructions as $instruction) {
 ?>        
         <tr>
-            <td><?= $instruction['instructionNumber'] ?>.</td>
-            <td class="td_left"><?= $instruction['instruction'] ?></td>
+            <td><?= h($instruction['instructionNumber']) ?>.</td>
+            <td class="td_left"><?= h($instruction['instruction']) ?></td>
         </tr>
 <?php
     }
 ?>
     </tbody>
 </table>
+<!-- ポップアップで行う処理 -->
+<script>
+ 
+function confirm_delete() { // 削除ボタンをクリックした場合
+    document.getElementById('popup').style.display = 'block';
+    return false;
+}
+ 
+function okfunc() { // OKをクリックした場合
+    window.location.href = 'http://localhost/FF/recipe/recipe_delete.php?recipeId=<?= $recipeId ?>';
+}
+ 
+function nofunc() { // キャンセルをクリックした場合
+    document.getElementById('popup').style.display = 'none';
+}
+</script>
 <div class="wrap2">
     <a href="./recipe_edit.php?recipeId=<?= $recipeId ?>">
         <input type="button" value="編集" class="button_edit"></a>
-    <a href="./recipe_delete.php?recipeId=<?= $recipeId ?>">
-        <input type="button" value="削除" class="button_delete"></a>
+        <input type="button" value="削除" class="button_delete" onclick="return confirm_delete()"></a>
     <br><br>
     <a href="../family_foods/recipe_list.php"><input type="button" value="戻る" style="width:180px;height:30px"></a>
 </div>
 </form>
+<!-- ポップアップ -->
+<div id="popup" style="width: 500px;font-size: 42px;background-color: #b8ebff;display: none;padding: 30px 20px;border: 2px solid #000;margin: auto;">
+<th><?= h($recipe['title']) ?></th><br>
+    本当に削除しますか？<br />
+    <button id="ok" onclick="okfunc()">はい</button>
+    <button id="no" onclick="nofunc()">いいえ</button>
+</div>
 <?php
     require_once __DIR__ ."/../footer.php";
 ?>

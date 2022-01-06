@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/../header.php";
+require_once __DIR__ . "/../util.php";
 
 //オブジェクトを生成する
 require_once __DIR__ . "/../classes/product.php";
@@ -31,8 +32,10 @@ if(empty($recipes)){
     $recipeId = 0;
     foreach($recipes as $recipe){
         if(isset($recipe['recipeId']) != $recipeId){
-            //recipeIdが変わったら仕切りする
-            echo '<hr width="500"><hr width="500">';
+            if($recipeId != 0){
+                //recipeIdが変わったら仕切りする
+                echo '<hr width="500"><hr width="500">';
+            }
             $recipeId = $recipe['recipeId'];
         }
 ?>
@@ -41,15 +44,15 @@ if(empty($recipes)){
 <div class="wrap">
     <section class="sachi_left">
         <div class="sachi_text">
-            <a href="//localhost/FF/recipe/recipe_detail.php?recipeId=<?= $recipeId ?>"><h3><?= $recipe['title'] ?></h3></a>
+            <a href="//localhost/FF/recipe/recipe_detail.php?recipeId=<?= $recipeId ?>"><h3><?= h($recipe['title']) ?></h3></a>
             <?= $recipe['comment'] ?><br><br>
-            <font color="gray"><?= $recipe['posttime'] ?></font><br>
+            <font color="gray"><?= h($recipe['posttime']) ?></font><br>
         </div>
     </section>
     <section class="sachi_right">
         <div class="sachi_img">
             <a href="//localhost/FF/recipe/recipe_detail.php?recipeId=<?= $recipeId ?>">
-            <img src="../images/<?= $recipe['imageName'] ?>"
+            <img src="../images/<?= h($recipe['imageName']) ?>"
             ></a>
         </div>
     </section>

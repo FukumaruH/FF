@@ -22,31 +22,22 @@
       }
     }
 
-    // カート内のすべてのデータを取り出す
-    public function getItems($userId){
-      $sql = "select items.ident, items.name, items.maker, items.price, cart.quantity, items.image, items.genre 
-                from cart join items on cart.ident = items.ident where cart.userId = ?";
-      $stmt = $this->query($sql, [$userId]);
-      $items = $stmt->fetchAll();
-      return $items;
+    //各テーブルの指定されたrecipeIdを持つ情報を削除する
+    public function deleterecipe($recipeId){
+      $sql = "delete from images where recipeId = ?";
+      $result = $this->exec($sql, [$recipeId]);
+      $sql = "delete from instructions where recipeId = ?";
+      $result = $this->exec($sql, [$recipeId]);
+      $sql = "delete from materials where recipeId = ?";
+      $result = $this->exec($sql, [$recipeId]);
+      $sql = "delete from recipes where recipeId = ?";
+      $result = $this->exec($sql, [$recipeId]);
     }
 
     // カート内の商品を削除する
     public function deleteItem($userId, $ident){
       $sql = "delete from cart where userId = ? and ident = ?";
       $result = $this->exec($sql, [$userId, $ident]);
-    }
-
-    // カート内のすべての商品を削除する
-    public function clearCart($userId){
-      $sql = "delete from cart where userId = ?";
-      $result = $this->exec($sql, [$userId]);
-    }
-
-    // カート内の商品の個数を変更する
-    public function changeQuantity($userId, $ident, $quantity){
-      $sql = "update cart set quantity = ? where userId = ? and ident = ?";
-      $result = $this->exec($sql, [$quantity, $userId, $ident]);
     }
 
     //ゲストからログインした場合、カート内の仮のユーザーIDをログイン後の正式なユーザーIDの値に変更する

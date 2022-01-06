@@ -29,15 +29,43 @@ $(function() {
 
     });
 
+    $('#upfile').change(function(e){
+        //ファイルオブジェクトを取得する
+        var file = e.target.files[0];
+        var reader = new FileReader();
+        
+        //画像でない場合は処理終了
+        if(file.type.indexOf("image") < 0){
+            alert("画像ファイルを指定してください。");
+            return false;
+        }
+ 
+        //アップロードした画像を設定する
+        reader.onload = (function(file){
+            return function(e){
+                $("#thumbnail").attr("src", e.target.result);
+                $("#thumbnail").attr("title", file.name);
+            };
+        })(file);
+        reader.readAsDataURL(file);
+ 
+    });
+
 });
 
 </script>
 
 <h2>レシピ投稿</h2><br>
-<form method="POST" action="./recipe_db.php" enctype="multipart/form-data"> <!-- ファイル名書き換える -->
+<?php
+    if(isset($_SESSION['recipe_error'])){
+        echo '<p class="error_class">' . $_SESSION['recipe_error']. '</p>';
+        unset($_SESSION['recipe_error']);
+    }
+?>
+<form method="POST" action="./recipe_register.php" enctype="multipart/form-data">
     <table class="recipe">
         <tr>
-        <th>タイトル</th><td colspan="3"><input type="text" name="title" class="td_title"></td>
+        <th>タイトル</th><td colspan="3"><input type="text" name="title" class="td_title" required></td>
         </tr>
         <tr>
         <th>ひとこと</th><td colspan="3"><textarea name="comment" cols="60" rows="2"></textarea></td>
@@ -49,17 +77,19 @@ $(function() {
 
 <div class="wrap">
     <section class="r_left">
-        <img class="detail_img" src="../images/sample1.jpg">
+        <input type="file" name="image" id="upfile" accept="image/*">
+        <img id="thumbnail" src="">
     </section>
     <section class="r_right">
+        <br>
         <table class="recipe recipe_material" id="tableMaterial">
             <thead>
                 <tr><th>材料</th><th>分量</th></tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><input type="text" name="material" class="td_material"></td>
-                    <td><input type="text" name="quantity" class="td_material"></td>
+                    <td><input type="text" name="material[]" class="td_material" required></td>
+                    <td><input type="text" name="quantity[]" class="td_material" required></td>
                 </tr>
             </tbody>
             <tfoot>
@@ -74,7 +104,7 @@ $(function() {
     </thead>
     <tbody>
         <tr>
-            <td><input type="text" name="instruction" class="td_instruction"></td>
+            <td><input type="text" name="instruction[]" class="td_instruction" required></td>
         </tr>
     </tbody>
     <tfoot>

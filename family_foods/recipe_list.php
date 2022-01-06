@@ -31,7 +31,7 @@ if(empty($recipes)){
     //ログインしたユーザーの投稿レシピ一覧を表示する
     $recipeId = 0;
     foreach($recipes as $recipe){
-        if(isset($recipe['recipeId']) != $recipeId){
+        if($recipe['recipeId'] != $recipeId){
             if($recipeId != 0){
                 //recipeIdが変わったら仕切りする
                 echo '<hr width="500"><hr width="500">';

@@ -5,7 +5,7 @@
   class Order extends DbData {
     //投稿されたレシピの内容をrecipesテーブルに登録する
     public function addrecipe($userId, $title, $poster, $comment, $servings, $posttime){
-      $sql = "insert inot recipes (userId, title, poster, comment, servings, posttiem) values (?, ?, ?, ?, ?, ?)";
+      $sql = "insert into recipes (userId, title, poster, comment, servings, posttime) values (?, ?, ?, ?, ?, ?)";
       $result = $this->exec($sql, [$userId, $title, $poster, $comment, $servings, date("Y-m-d H:i:s")]);
       $sql = "select max(recipeId) from recipes WHERE userId = ?";
       $stmt = $this->query( $sql,  [$userId]);
@@ -15,7 +15,7 @@
     }
     //投稿されたレシピの内容をmaterialsテーブルに登録する
     public function addmaterial($material, $quantity, $recipeId){
-      $sql = "insert into materals (material, quantity, recipeId) values (?, ?, ?)";
+      $sql = "insert into materials (material, quantity, recipeId) values (?, ?, ?)";
       $result = $this->exec($sql, [$material, $quantity, $recipeId]);
     }
     //投稿されたレシピの内容をinstructionsテーブルに登録する

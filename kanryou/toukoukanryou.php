@@ -1,5 +1,5 @@
 <?php
-    # require_once __DIR__ . '/../header.php';
+    require_once __DIR__ . '/../header_login.php';
     $http_host = '//' .$_SERVER['SERVER_NAME'];
     $FFid = mb_substr($_SERVER['REQUEST_URI'], 1, 2);
     $shop_css = $http_host .'/'.$FFid.'/css/shop.css';
@@ -15,7 +15,6 @@
      <li><a href="../family_foods/recipe_list.php">レシピ一覧に戻る</a></li>
      <li>|</li>
      <li><a href="../user/logout.php">ログアウト</a></li>
-     <li>|</li>
 <?php
     require_once __DIR__ ."/../footer.php";
 ?>

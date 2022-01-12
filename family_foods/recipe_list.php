@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/../header.php";
+require_once __DIR__ . "/../header_login.php";
 require_once __DIR__ . "/../util.php";
 
 //オブジェクトを生成する
@@ -16,14 +16,15 @@ if(empty($recipes)){
   } else{
     //投稿レシピの情報がある場合
     echo '<p>投稿レシピ一覧は次の通りです。</p>';
-    echo '<p>ご家庭の味ををお楽しみください。</p>';
+    echo '<p>ご家庭の味をお楽しみください。</p>';
   }
 ?>
 
-<p style="text-align: right;margin-right:30px";><a href="//localhost/FF/user/logout.php">
-    <input type="button" value="ログアウト" style="width:100px;height:30px"></a></p>
+<!--<p style="text-align: right;margin-right:30px";><a href="//localhost/FF/user/logout.php">
+    <input type="button" value="ログアウト" style="width:100px;height:30px"></a></p> -->
 <p style="text-align: right;margin-right:30px";><a href="//localhost/FF/recipe/recipe_post.php">
-    <input type="button" value="レシピを投稿する" style="width:150px;height:50px;"></a><p>
+    <input type="button" value="レシピを投稿する" style="width:150px;height:50px;
+    background-color:#b2ffd8;border-radius:5px;border:2px solid #8ae6b8;"></a><p>
 
 <h1>投稿レシピ一覧</h1><hr><br>
 

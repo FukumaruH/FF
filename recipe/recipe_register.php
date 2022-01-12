@@ -77,4 +77,4 @@
     $order->addimage($imageName, $recipeId);
 
     $order->createview();
-    header('Location: ../family_foods/recipe_list.php');
+    header('Location: ../kanryou/toukoukanryou.php');

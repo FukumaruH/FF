@@ -8,6 +8,7 @@
     $recipe = $product->getRecipe($recipeId);
     $materials = $product->getMaterials($recipeId);
     $instructions = $product->getInstructions($recipeId);
+    $comments = $product->getComments($recipeId);
     require_once __DIR__ . '/../header_login.php';
     require_once __DIR__ . '/../util.php'
 ?>
@@ -97,6 +98,20 @@ function nofunc() { // キャンセルをクリックした場合
     <button id="ok" onclick="okfunc()">はい</button>
     <button id="no" onclick="nofunc()">いいえ</button>
 </div>
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<table>
+<?php
+    foreach($comments as $comment) {
+?>
+    <tr>
+        <th>投稿者: <?= h($comment['poster']) ?></th>
+        <td><?= h($comment['comment']) ?><td>
+    <tr>
+<?php
+    }
+?>
+</table>
 <?php
     require_once __DIR__ ."/../footer.php";
 ?>

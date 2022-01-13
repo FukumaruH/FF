@@ -23,10 +23,10 @@
         <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a href="//localhost/FF/index.php" class="nav-link">サイトTOP</a>
+                    <a href="//localhost/FF/family_foods/recipe_list.php"class="nav-link">投稿レシピ一覧</a>
                 </li>
                 <li class="nav-item active">
-                    <a href="//localhost/FF/user/login.php" class="nav-link">ログイン</a>
+                    <a href="//localhost/FF/user/logout.php" class="nav-link">ログアウト</a>
                 </li>
             </ul>
         </div>

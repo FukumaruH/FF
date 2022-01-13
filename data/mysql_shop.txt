@@ -101,6 +101,23 @@ create table images(
 insert into images(imageName, recipeId)
 values ('curryruce.png', 1);
 
+#　コメントテーブルcommentsの作成
+drop table if exists comments;
+create table comments(
+    commentId           int auto_increment primary key,
+    comment             varchar(255) default '',
+    poster              varchar(20) default '',
+    recipeId            int,
+    foreign key (recipeId)
+    references recipes(recipeId)
+);
+
+#　テーブルcommentsへデータを入力
+insert into comments(comment, poster, recipeId)
+values ('作ってみてね', '母', 1);
+insert into comments(comment, poster, recipeId)
+values ('レシピ通りに作ったら家の味が出ておいしかった', '息子', 1);
+
 CREATE OR REPLACE VIEW recipeslist AS SELECT recipes.userId, recipes.recipeId, recipes.title, 
 recipes.poster, recipes.comment, recipes.servings, recipes.posttime, images.imageName 
 FROM recipes, images WHERE recipes.recipeId = images.recipeId;

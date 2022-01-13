@@ -52,4 +52,12 @@
             return $instructions;
         }
 
+        //選択されたレシピのコメントを取り出す
+        public function getComments($recipeId){
+            $sql = "select * from comments where recipeId = ? order by commentId";
+            $stmt = $this->query($sql, [$recipeId]);
+            $comments = $stmt->fetchAll();
+            return $comments;
+        }
+
     }

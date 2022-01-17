@@ -35,4 +35,10 @@
       FROM recipes, images WHERE recipes.recipeId = images.recipeId";
       $result = $this->exec($sql, [ ]);
     }
+
+    //投稿されたコメントの内容をcommentsテーブルに登録する
+    public function addcomment($comment, $poster, $recipeId){
+      $sql = "insert into comments (comment, poster, recipeId) values (?, ?, ?)";
+      $result = $this->exec($sql, [$comment, $poster, $recipeId]);
+    }
   }

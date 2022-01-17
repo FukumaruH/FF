@@ -75,13 +75,13 @@ $(function() {
 <form method="POST" action="./recipe_register2.php" enctype="multipart/form-data">
     <table class="recipe">
         <tr>
-        <th>タイトル</th><td colspan="3"><input type="text" name="title" class="td_title" value="<?= h($recipe['title']) ?>" required></td>
+        <th>タイトル</th><td colspan="3"><input type="text" name="title" class="td_title" maxlength="30" value="<?= h($recipe['title']) ?>" required></td>
         </tr>
         <tr>
         <th>ひとこと</th><td colspan="3"><textarea name="comment" cols="60" rows="2"><?= h($recipe['comment']) ?></textarea></td>
         </tr>
         <tr>
-        <th>投稿者</th><td><input type="text" name="poster" value="<?= h($recipe['poster']) ?>"></td><th>何人分</th><td><input type="text" name="servings" value="<?= h($recipe['servings']) ?>"></td>
+        <th>投稿者</th><td><input type="text" name="poster" maxlength="20" value="<?= h($recipe['poster']) ?>"></td><th>何人分</th><td><input type="text" name="servings" value="<?= h($recipe['servings']) ?>"></td>
         </tr>
     </table>
 

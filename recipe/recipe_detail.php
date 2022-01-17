@@ -98,7 +98,7 @@ function nofunc() { // キャンセルをクリックした場合
     <button id="ok" onclick="okfunc()">はい</button>
     <button id="no" onclick="nofunc()">いいえ</button>
 </div>
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<br><hr><br>
 
 <table>
 <?php
@@ -112,6 +112,20 @@ function nofunc() { // キャンセルをクリックした場合
     }
 ?>
 </table>
+<br>
+<form method="POST" action="./recipe_register3.php">
+<table class="recipe">
+    <tr>
+        <th>投稿者</th><td><input type="text" name="poster" maxlength="20" class="td_title" required></td>
+    </tr>
+    <tr>
+        <th>コメント</th><td><textarea name="comment" cols="60" rows="2" maxlength="255" required></textarea></td>
+    </tr>
+</table>
+<input type="hidden" name="recipeId" value="<?= $recipeId ?>">
+<input type="submit" value="コメントを送信">
+</form>
+<br>
 <?php
     require_once __DIR__ ."/../footer.php";
 ?>

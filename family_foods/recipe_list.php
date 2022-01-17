@@ -22,9 +22,21 @@ if(empty($recipes)){
 
 <!--<p style="text-align: right;margin-right:30px";><a href="//localhost/FF/user/logout.php">
     <input type="button" value="ログアウト" style="width:100px;height:30px"></a></p> -->
-<p style="text-align: right;margin-right:30px";><a href="//localhost/FF/recipe/recipe_post.php">
-    <input type="button" value="レシピを投稿する" style="width:150px;height:50px;
-    background-color:#b2ffd8;border-radius:5px;border:2px solid #8ae6b8;"></a><p>
+<!-- <p style="text-align: right;margin-right:30px";><a href="//localhost/FF/recipe/recipe_post.php">
+    <input type="button" 
+    img src="/FF/images/test0.png" width="50px" height="50px" 
+                onmouseover="this.src='/FF/images/test.png'"
+                onmouseout="this.src='/FF/images/test0.png'" 
+    value="レシピを投稿する" style="width:150px;height:50px;
+    background-color:#b2ffd8;border-radius:5px;border:2px solid #8ae6b8;"></a><p> -->
+
+
+<p style="text-align: right;margin-right:30px";>
+<a href="//localhost/FF/recipe/recipe_post.php">
+<img src="/FF/images/button-images/button0.png" width="170px" height="60px" 
+                onmouseover="this.src='/FF/images/button-images/button1.png'"
+                onmouseout="this.src='/FF/images/button-images/button0.png'"></a></p>
+
 
 <h1>投稿レシピ一覧</h1><hr><br>
 

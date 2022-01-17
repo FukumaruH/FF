@@ -19,14 +19,18 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a><font color="white">Family Foods</font></a>
+        <a><img src="\FF\images\logo_favi.png" width="50" height="50"><font size="5"color="white"> Family Foods</font></a>
         <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a href="//localhost/FF/index.php" class="nav-link">サイトTOP</a>
+                    <a href="//localhost/FF/index.php" class="nav-link"><font size="4"color="white"
+                    onmouseover="this.style.textDecoration='underline'"
+                    onmouseout="this.style.textDecoration=''">サイトTOP</font></a>
                 </li>
                 <li class="nav-item active">
-                    <a href="//localhost/FF/user/login.php" class="nav-link">ログイン</a>
+                    <a href="//localhost/FF/user/login.php" class="nav-link"><font size="4"color="white"
+                    onmouseover="this.style.textDecoration='underline'"
+                    onmouseout="this.style.textDecoration=''">ログイン</font></a>
                 </li>
             </ul>
         </div>

@@ -135,7 +135,10 @@ $(function() {
 </table>
 <input type="hidden" name="recipeId" value="<?= $recipeId ?>">
 <div class="wrap2">
-    <input type="submit" value="更新" class="button_post">
+        <!-- <input type="submit" value="更新" class="button_post"> -->
+        <input type="image" src="/FF/images/button-images/kousin0.png" width="90px" height="70px" 
+                onmouseover="this.src='/FF/images/button-images/kousin1.png'"
+                onmouseout="this.src='/FF/images/button-images/kousin0.png'">
     <br><br>
 </div>
 </form>

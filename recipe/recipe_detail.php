@@ -85,8 +85,15 @@ function nofunc() { // キャンセルをクリックした場合
 </script>
 <div class="wrap2">
     <a href="./recipe_edit.php?recipeId=<?= $recipeId ?>">
-        <input type="button" value="編集" class="button_edit"></a>
-        <input type="button" value="削除" class="button_delete" onclick="return confirm_delete()"></a>
+        <img src="/FF/images/button-images/henshu0.png" width="90px" height="70px" 
+                onmouseover="this.src='/FF/images/button-images/henshu1.png'"
+                onmouseout="this.src='/FF/images/button-images/henshu0.png'">
+        <!-- <input type="button" value="編集" class="button_edit"> --> </a>
+        <!-- <input type="button" value="削除" class="button_delete" -->
+        <img src="/FF/images/button-images/sakuzyo0.png" width="90px" height="70px" 
+                onmouseover="this.src='/FF/images/button-images/sakuzyo1.png'"
+                onmouseout="this.src='/FF/images/button-images/sakuzyo0.png'" onclick="return confirm_delete()"></a>
+    <br><br>
     <br><br>
     <a href="../family_foods/recipe_list.php"><input type="button" value="戻る" style="width:180px;height:30px"></a>
 </div>

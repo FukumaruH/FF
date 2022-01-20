@@ -112,8 +112,8 @@ function nofunc() { // キャンセルをクリックした場合
     foreach($comments as $comment) {
 ?>
     <tr>
-        <th>投稿者: <?= h($comment['poster']) ?></th>
-        <td><?= h($comment['comment']) ?><td>
+        <th class="td_left">投稿者: <?= h($comment['poster']) ?></th>
+        <td class="td_left"><?= h($comment['comment']) ?><td>
     <tr>
 <?php
     }

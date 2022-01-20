@@ -136,6 +136,11 @@ th, td {
   text-align: right;
 }
 
+/* セル内のデータを左詰め表示 */
+.td_left {
+  text-align: left;
+}
+
 /* セル内のデータをセンター表示 */
 .td_center {
   text-align: center;

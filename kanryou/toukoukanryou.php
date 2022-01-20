@@ -8,7 +8,7 @@
   <body>
    <div class="main">
        <br>
-    <h2>投稿が完了しました</h2><br>
+    <h2><font color="#652600">投稿が完了しました</font></h2><br>
     <ul class="navi">
      <li><a href="../recipe/recipe_post.php">レシピを投稿する</a></li>
      <li>|</li>

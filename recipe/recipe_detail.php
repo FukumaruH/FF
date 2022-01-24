@@ -99,7 +99,7 @@ function nofunc() { // キャンセルをクリックした場合
 </div>
 </form>
 <!-- ポップアップ -->
-<div id="popup" style="width: 500px;font-size: 42px;background-color: #b8ebff;display: none;padding: 30px 20px;border: 2px solid #000;margin: auto;">
+<div id="popup" style="width: 500px;font-size: 42px;background-color: #e0ffff;display: none;padding: 30px 20px;border: 2px solid #000;margin: auto;">
 <th><?= h($recipe['title']) ?></th><br>
     本当に削除しますか？<br />
     <button id="ok" onclick="okfunc()">はい</button>
